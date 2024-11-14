@@ -1,0 +1,84 @@
+/*
+Paleta de colores:
+background-color: #212121
+background-color-alt: #303030
+font-color: #fff
+action-color: #ffd700
+*/
+
+
+/* General */
+* {
+  padding: 0px;
+  list-style-type: none;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+}
+
+/* Main */
+body {
+  background-color: #212121;
+  color: #fff;
+}
+
+p, span {
+  font-size: 17px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px;
+}
+
+.div_letras {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 5px;
+  
+}
+
+.letra {
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  background-color: #fff;
+}
+
+.letra_correcta {
+  background-color: #21b600;
+}
+
+.letra_incorrecta {
+  background-color: #c90000;
+}
+
+span {
+  color: #ffd700;
+}
+
+.div_dibujo {
+  width: 250px;
+  height: 250px;
+  background-color: #303030;
+}
+
+.button_menu {
+  background-color: #fff;
+  width: 150px;
+  height: 40px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+/* Footer */

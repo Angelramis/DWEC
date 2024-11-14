@@ -120,7 +120,7 @@
 
 //Crecimiento de funciones
 
-//Que pasa, que si se añaden mas animales de la misma forma añadiendolos como parametros
+//Si se añaden mas animales de la misma forma añadiendolos como parametros
 //, la funcion crecera demasiado.
 // imprimirInventarioGranja(10, 15);
 
@@ -167,6 +167,11 @@
 //Math.min()
 // let a = Math.min(2,4);
 // console.log(a);
+
+
+
+// **EJERCICIOS ** 
+
 
 //Ejercicio: escribir una función que devuelva el mínimo de 3 números.
 //3 argumentos (números) y devuelve el más pequeño de estos.
@@ -215,40 +220,4 @@
 // console.log(esPar(50));
 // console.log(esPar(75));
 
-//Ejercicio: dado un numero que pongas de 4 cifras, haz una funcion sin uso
-// de recursividad que de como resultado el numero constante de Kaprekar (6174).
-// No puede introducirse un numero repetido. Máximo 2 cifras iguales.
-// Se necesitan, que haya 4 cifras, si el numero es menor añadir 0 a la izquierda.
-// El usuario introduce el numero, a partir de el se obtienen dos más: 
-// - Uno con las cifras del numero ordenadas de mayor a menor
-// - Otro con las cifras del numero ordenadas de menor a mayor
-// Restamos los dos numeros
-// Repetimos el proceso con el resultado de la resta
-// Se tiene que resolver en máximo 7 pasos. El programa debe decir en cuantos pasos se
-//ha resuelto
 
-// Y si hago dos funciones a parte: Una que haga la ordenacion de menor a mayor
-// y otra de mayor a menor?
-
-function calcularNumeroKaprekar(num) {
-  if (num.length < 4) {
-    //Rellenar número con ceros
-    while (num.length < 4) {
-      num = '0' + num;
-    }
-  
-  } else if (num.length > 4) {
-    console.log("El número introducido tiene más de 4 cifras.");
-
-  } else {
-    //Guardar numero introducido con las cifras de mayor a menor
-    for (let i = 0; i < num.length; i++) {
-      
-    }
-    
-  }
-
-
-}
-
-calcularNumeroKaprekar(4575);
