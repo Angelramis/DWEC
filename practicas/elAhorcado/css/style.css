@@ -1,5 +1,4 @@
-/*
-Paleta de colores:
+/* Paleta de colores:
 background-color: #212121
 background-color-alt: #303030
 font-color: #fff
@@ -15,6 +14,7 @@ action-color: #ffd700
   box-sizing: border-box;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
 }
+
 
 /* Main */
 body {
@@ -35,12 +35,16 @@ main {
   margin: 20px;
 }
 
+.palabra_oculta {
+  letter-spacing: 15px;
+  font-size: 25px;
+}
+
 .div_letras {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   gap: 5px;
-  
 }
 
 .letra {
@@ -62,10 +66,9 @@ span {
   color: #ffd700;
 }
 
-.div_dibujo {
-  width: 250px;
-  height: 250px;
-  background-color: #303030;
+.div_dibujo, .img_dibujo {
+  width: 200px;
+  height: 200px;
 }
 
 .button_menu {
@@ -75,10 +78,3 @@ span {
   padding: 5px;
   border-radius: 5px;
 }
-
-
-
-
-
-
-/* Footer */

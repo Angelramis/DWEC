@@ -60,7 +60,6 @@ function llenaIU() {
 // EVENTOS
 contenedor.addEventListener('click', (e)=>{
   if(e.target.classList.contains('asiento') && !e.target.classList.contains('ocupado')) {
-
     e.target.classList.toggle('seleccionado');
     actualizaSeleccionAsientos();
   }
