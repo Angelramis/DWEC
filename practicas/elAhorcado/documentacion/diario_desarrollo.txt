@@ -1,0 +1,2 @@
+25-11:
+- Implementado actualización del dibujo del ahorcado con 7 intentos.

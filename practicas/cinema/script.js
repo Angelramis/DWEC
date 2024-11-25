@@ -15,11 +15,11 @@ function actualizaSeleccionAsientos() {
   
   const asientosSeleccionados = document.querySelectorAll('.fila .asiento.seleccionado');
   
-  // const indiceAsientos = [...asientosSeleccionados].map(function(asiento) {
-  //   return [...asientos].indexOf(asiento);
-  // });
+  const indiceAsientos = [...asientosSeleccionados].map(function(asiento) {
+    return [...asientos].indexOf(asiento);
+  });
 
-  const indiceAsientos = [...asientosSeleccionados].map((asiento)=>[...asientos].indexOf(asiento));
+  // const indiceAsientos = [...asientosSeleccionados].map((asiento)=>[...asientos].indexOf(asiento));
 
   localStorage.setItem('asientosSeleccionados', JSON.stringify(indiceAsientos));
 
