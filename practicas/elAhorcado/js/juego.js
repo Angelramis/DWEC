@@ -1,12 +1,11 @@
 /* Captura de elementos del DOM */
 let dibujo = document.getElementById('img_dibujo');
 let palabraVisibleP = document.getElementById('palabra_visible_p');
-let crono = document.getElementById('crono');
 let intentos = document.getElementById('intentos');
 let errores = document.getElementById('errores');
 let divLetras = document.getElementById('div_letras');
 let letras = document.getElementsByClassName('letra');
-let cuentaAtras = document.getElementById('cuenta_atras');
+let cronoHTML = document.getElementById('crono');
 let textoPartida = document.getElementById('texto_partida');
 
 /* Variables */
@@ -17,6 +16,7 @@ let palabraVisible = []; // Array de chars
 let contadorIntentos = parseInt(intentos.innerText); // int
 let contadorErrores = parseInt(errores.innerText); // int
 let palabraAdivinada = false; // boolean
+let tiempo = new Date();
 
 function mostrarPalabra() {
   palabraVisibleP.innerHTML = null; // resetear HTML de palabra 
@@ -42,10 +42,51 @@ function elegirPalabra() {
   
 }
 
+tiempo.setHours(0, 0, 0, 0);
+
+function crono() {
+  let horas = tiempo.getHours();
+  let minutos = tiempo.getMinutes();
+  let segundos = tiempo.getSeconds();
+
+  segundos += 1;
+  tiempo.setSeconds(segundos);
+
+  if (segundos == 60) {
+    segundos = 0;
+    minutos += 1;
+    tiempo.setMinutes(minutos);
+  }
+
+  if(minutos == 60 ) {
+    horas += 1;
+    minutos = 0;
+    tiempo.setHours(horas);
+  }
+  
+  horas = rellenarConCeros(horas, 2);
+  minutos = rellenarConCeros(minutos, 2);
+  segundos = rellenarConCeros(segundos, 2);
+
+  let horaActual = horas + ":" + minutos + ":" + segundos;
+
+  cronoHTML.innerHTML = horaActual;
+}
+
+function reiniciarCrono() {
+  laMevaData.setHours(0, 0, 0, 0);
+  cronoHTML.innerHTML = "00:00:00";
+}
+
+// Función para iniciar el crono
+function iniciarCrono() {
+  setInterval(crono, 1000);
+}
+
 
 elegirPalabra();
 mostrarPalabra();
-
+iniciarCrono(); 
 actualizarDibujo(contadorIntentos); // funcionesGenerales.js
 
 
@@ -54,46 +95,57 @@ actualizarDibujo(contadorIntentos); // funcionesGenerales.js
 
 divLetras.addEventListener('click', function(e) {
 
+
   let letraCorrecta = false;
   let letraElegida = e.target;
 
+
   // Si la letra clickada no ha sido usada
-  if(letraElegida.classList.contains('letra') &&
+  if (letraElegida.classList.contains('letra') &&
   !letraElegida.classList.contains('letra_incorrecta') &&
   !letraElegida.classList.contains('letra_correcta')) {
+
 
     // Comprobar si la letra existe en la palabra elegida y asignarla
     for (let i = 0; i < palabraVisible.length; i++) {
       if (letraElegida.value == palabraElegida[i]) {
         console.log("La letra presionada existe en la palabra");
 
-        // char de palabra visible se vuelve el valor de la letra correcta elegida 
+
+        // char de palabra visible se vuelve el valor de la letra correcta elegida
         palabraVisible[i] = letraElegida.value;
         letraCorrecta = true;
       }
     }
+
 
     // Si la letra no es correcta
     if (letraCorrecta == false) {
         /* Añadir a la letra clase incorrecta */
         letraElegida.classList.toggle('letra_incorrecta');
 
+
         /* Restar intento y sumar error */
         contadorIntentos = parseInt(contadorIntentos) -1;
         intentos.innerText = contadorIntentos;
 
+
         contadorErrores = parseInt(contadorErrores) + 1;
         errores.innerText = contadorErrores;
+
 
     } else if (letraCorrecta == true) {
       /* Añadir a la letra clase correcta */
       letraElegida.classList.toggle('letra_correcta');
 
+
       // Mostrar en html la palabra visible actualizada
       mostrarPalabra();
     }
 
+
     palabraAdivinada = true;
+
 
     /* Lógica si adivina o no, todas las letras */
     for (let i = 0; i < palabraVisible.length; i++) {
@@ -101,6 +153,7 @@ divLetras.addEventListener('click', function(e) {
           palabraAdivinada = false;
       }
     }
+
 
     if (palabraAdivinada == true) {
       // podria hacer que llamara una funcion que gestionara el crono etc.
@@ -110,7 +163,10 @@ divLetras.addEventListener('click', function(e) {
   }
 
 
+
+
   actualizarDibujo(contadorIntentos);
 }, false)
+
 
 

@@ -1,0 +1,31 @@
+Documentación técnica
+
+1. Descripción general del proyecto:
+
+
+
+2. Funcionalidad:
+
+
+
+3. Estructura:
+
+
+
+4. Requisitos del sistema:
+
+
+
+5. Instalación y configuración:
+
+
+
+6. Uso del proyecto:
+
+
+
+7. Actualización:
+
+
+
+8. Referencias:

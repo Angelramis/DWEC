@@ -29,3 +29,11 @@ function actualizarDibujo(contadorIntentos) {
   }
 }
 
+// Rellenar numero con ceros
+function rellenarConCeros(num, cifra) {
+  num = String(num); // Pasar a cadena
+  while (num.length < cifra) {
+    num = "0" + num;
+  }
+  return num;
+}

@@ -2,5 +2,9 @@
 - Implementado actualización del dibujo del ahorcado con 7 intentos.
 
 2-12:
-- Funciona la lógica de elegir una letra con intentos/errores y haciendose la palabra
+- Funcionando lógica de elegir una letra con intentos/errores y haciendose la palabra
 visible en el html.
+- Hecho lógica de adivinar la palabra
+
+9-12:
+- Implementado funcionalidad de cronometro 

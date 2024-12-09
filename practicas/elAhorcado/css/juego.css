@@ -1,0 +1,32 @@
+.palabra_oculta {
+  letter-spacing: 15px;
+  font-size: 25px;
+}
+
+.div_letras {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 5px;
+}
+
+.letra {
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  background-color: #fff;
+}
+
+.letra_correcta {
+  background-color: #21b600;
+}
+
+.letra_incorrecta {
+  background-color: #c90000;
+}
+
+.div_dibujo, .img_dibujo {
+  width: 200px;
+  height: 200px;
+}
+
