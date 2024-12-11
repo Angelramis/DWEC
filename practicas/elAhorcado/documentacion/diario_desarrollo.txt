@@ -8,3 +8,10 @@ visible en el html.
 
 9-12:
 - Implementado funcionalidad de cronometro 
+
+11-12:
+- Implementado gestión al perder y ganar partida. No poder pulsar teclas y parar
+el cronómetro.
+- Hecho que se inicie el crono cuando se pulse por primera vez una letra.
+- Hecho el diseño y funcionalidad de la cuenta atrás.
+-

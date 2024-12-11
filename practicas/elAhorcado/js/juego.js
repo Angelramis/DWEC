@@ -6,6 +6,7 @@ let errores = document.getElementById('errores');
 let divLetras = document.getElementById('div_letras');
 let letras = document.getElementsByClassName('letra');
 let cronoHTML = document.getElementById('crono');
+let tiempoAtrasHTML = document.getElementById('cuenta_atras');
 let textoPartida = document.getElementById('texto_partida');
 
 /* Variables */
@@ -17,6 +18,10 @@ let contadorIntentos = parseInt(intentos.innerText); // int
 let contadorErrores = parseInt(errores.innerText); // int
 let palabraAdivinada = false; // boolean
 let tiempo = new Date();
+let elCrono;
+let primeraLetraPulsada = false;
+let tiempoAtras = new Date();
+let elTiempoAtras;
 
 function mostrarPalabra() {
   palabraVisibleP.innerHTML = null; // resetear HTML de palabra 
@@ -42,6 +47,8 @@ function elegirPalabra() {
   
 }
 
+/* Funciones CRONÓMETRO */
+
 tiempo.setHours(0, 0, 0, 0);
 
 function crono() {
@@ -58,7 +65,7 @@ function crono() {
     tiempo.setMinutes(minutos);
   }
 
-  if(minutos == 60 ) {
+  if (minutos == 60 ) {
     horas += 1;
     minutos = 0;
     tiempo.setHours(horas);
@@ -74,20 +81,72 @@ function crono() {
 }
 
 function reiniciarCrono() {
-  laMevaData.setHours(0, 0, 0, 0);
+  tiempo.setHours(0, 0, 0, 0);
   cronoHTML.innerHTML = "00:00:00";
 }
 
 // Función para iniciar el crono
 function iniciarCrono() {
-  setInterval(crono, 1000);
+  elCrono = setInterval(crono, 1000);
+}
+
+function pararCrono() {
+  clearInterval(elCrono);
+}
+
+
+/* Funciones CUENTA ATRÁS */
+
+function cuentaAtras() {
+  let segundos = tiempoAtras.getSeconds();
+
+  segundos = segundos - 1;
+  tiempoAtras.setSeconds(segundos);
+
+  // Si la cuenta atrás llega a 0 segundos
+  if (segundos == 0) {
+    console.log("0 segundos");
+    restarIntentoYSumarError();
+    reiniciarCuentaAtras();
+  }
+
+
+  let horaActual =  segundos;
+
+  tiempoAtrasHTML.innerHTML = horaActual;
+}
+
+function reiniciarCuentaAtras() {
+  tiempoAtras.setHours(0, 0, 10, 0);
+}
+
+// Función para iniciar el crono
+function iniciarCuentaAtras() {
+  tiempoAtras.setHours(0, 0, 10, 0);
+  elTiempoAtras = setInterval(cuentaAtras, 1000);
+}
+
+function pararCuentaAtras() {
+  clearInterval(elTiempoAtras);
+}
+
+
+/* Funciones del juego */
+
+function restarIntentoYSumarError() {
+  /* Restar intento y sumar error, actualizandose en HTML */
+  contadorIntentos = parseInt(contadorIntentos) -1;
+  intentos.innerText = contadorIntentos;
+
+  contadorErrores = parseInt(contadorErrores) + 1;
+  errores.innerText = contadorErrores;
 }
 
 
 elegirPalabra();
 mostrarPalabra();
-iniciarCrono(); 
 actualizarDibujo(contadorIntentos); // funcionesGenerales.js
+
 
 
 
@@ -95,10 +154,23 @@ actualizarDibujo(contadorIntentos); // funcionesGenerales.js
 
 divLetras.addEventListener('click', function(e) {
 
-
   let letraCorrecta = false;
   let letraElegida = e.target;
 
+  // Si ha perdido, no dejar que pulse las letras
+  if (contadorErrores >= 7) {
+    exit();
+  }
+
+  // Gestión si es la primera vez que pulsa una tecla
+  if (!primeraLetraPulsada) {
+    iniciarCrono();
+    iniciarCuentaAtras(); 
+    primeraLetraPulsada = true;
+  } 
+
+  // Al haber pulsado una letra, reinicar cuenta atrás
+  reiniciarCuentaAtras();
 
   // Si la letra clickada no ha sido usada
   if (letraElegida.classList.contains('letra') &&
@@ -125,19 +197,20 @@ divLetras.addEventListener('click', function(e) {
         letraElegida.classList.toggle('letra_incorrecta');
 
 
-        /* Restar intento y sumar error */
-        contadorIntentos = parseInt(contadorIntentos) -1;
-        intentos.innerText = contadorIntentos;
+        restarIntentoYSumarError();
 
-
-        contadorErrores = parseInt(contadorErrores) + 1;
-        errores.innerText = contadorErrores;
-
+        /* Gestión al PERDER la partida */
+        if (contadorErrores == 7) {
+          textoPartida.innerHTML = "Has perdido. Intentos acabados";
+          pararCrono();
+          pararCuentaAtras();
+          // Que no pueda pulsar ninguna tecla de las letras
+          exit();
+        }
 
     } else if (letraCorrecta == true) {
       /* Añadir a la letra clase correcta */
       letraElegida.classList.toggle('letra_correcta');
-
 
       // Mostrar en html la palabra visible actualizada
       mostrarPalabra();
@@ -154,11 +227,12 @@ divLetras.addEventListener('click', function(e) {
       }
     }
 
-
+    /* Gestión al GANAR la partida */
     if (palabraAdivinada == true) {
-      // podria hacer que llamara una funcion que gestionara el crono etc.
       textoPartida.innerHTML = "Has adivinado la palabra";
-      console.log(palabraVisible);
+      pararCrono();
+      pararCuentaAtras();
+      exit();
     }
   }
 

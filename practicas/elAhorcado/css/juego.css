@@ -30,3 +30,24 @@
   height: 200px;
 }
 
+.crono {
+  font-size: 20px;
+}
+
+.cuenta_atras {
+  border: 2px solid #c90000;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  /* Main */
+  .div_letras {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
