@@ -14,4 +14,13 @@ visible en el html.
 el cronómetro.
 - Hecho que se inicie el crono cuando se pulse por primera vez una letra.
 - Hecho el diseño y funcionalidad de la cuenta atrás.
--
+
+
+13-12:
+- Error exit(). Era pasaro a return.
+- Comprobar que cuenta atrás, y demás cosas hechas funcionan.
+
+15-12:
+- Guardado en localstorage de palabras con estadísticas. Actualizar registro anterior si se ha usado la misma palabra y mejorado datos.
+- Json con palabras y documento pre-juego.
+- Página de records.

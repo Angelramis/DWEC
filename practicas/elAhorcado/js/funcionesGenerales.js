@@ -37,3 +37,31 @@ function rellenarConCeros(num, cifra) {
   }
   return num;
 }
+
+// Función para guardar el registro de la partida en LS
+// o sobreescribir registro si se ha usado una palabra ya usada y mejorado.
+function guardarRegistro(palabra, numErrores, tiempoTotal) {
+  // Obtener registros guardados si hay.
+  let registros = JSON.parse(localStorage.getItem('registrosJuego')) || [];
+
+  // Buscar si existe un registro para la palabra usada
+  let registroAnterior = registros.find((registro) => registro.palabra === palabra);
+
+  // Si ya existe un registro de la misma palabra
+  if (registroAnterior) {
+    // Actualizar errores si los actuales son menos
+    if (numErrores < registroAnterior.numErrores) {
+      registroAnterior.numErrores = numErrores;
+    }
+    // Actualizar tiempo si el actual es menor
+    if (tiempoTotal < registroAnterior.tiempoTotal) {
+      registroAnterior.tiempoTotal = tiempoTotal;
+    }
+  } else {
+    // Añadir nuevo registro si no existe para esta palabra
+    registros.push({palabra, numErrores, tiempoTotal});
+  }
+
+  // Guardar registros actualizados
+  localStorage.setItem('registrosJuego', JSON.stringify(registros));
+}

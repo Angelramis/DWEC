@@ -1,0 +1,16 @@
+{
+  "temas": [
+    {
+      "nombre": "Informatica",
+      "palabras": ["Programacion", "Teclado", "Silla", "JavaScript"]
+    },
+    {
+      "nombre": "Frutas",
+      "palabras": ["Kaki", "Manzana", "Naranja", "Platano"]
+    },
+    {
+      "nombre": "Ciudades",
+      "palabras": ["Londres", "Madrid", "Mahon", "Valencia"]
+    }
+  ]
+}

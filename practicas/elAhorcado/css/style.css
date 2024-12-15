@@ -16,12 +16,17 @@ action-color: #ffd700
 }
 
 /* Main */
+
+.titulo {
+  text-align: center
+}
+
 body {
   background-color: #212121;
   color: #fff;
 }
 
-p, span {
+p, span, label, option, select, input {
   font-size: 17px;
 }
 
@@ -34,9 +39,10 @@ main {
   margin: 20px;
 }
 
-span {
+span, .amarillo {
   color: #ffd700;
 }
+
 
 .button_general {
   background-color: #fff;
@@ -47,6 +53,11 @@ span {
 }
 
 .button_general:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+input[type="submit"]:hover, select:hover {
   cursor: pointer;
   opacity: 0.7;
 }

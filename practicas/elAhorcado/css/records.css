@@ -1,0 +1,22 @@
+#tabla-records, tr, th, td  {
+  border: 1px solid #fff;
+}
+
+#tabla-records {
+  width: 400px;
+}
+
+td, th {
+  text-align: center;
+  padding: 10px;
+}
+
+.p-sin-registros {
+  display: none;
+}
+
+/* Clase para mostrar p-sin-registros */
+.mostrar {
+  display: block;
+}
+

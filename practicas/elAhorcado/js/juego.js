@@ -29,7 +29,7 @@ function mostrarPalabra() {
   // Mostrar la palabra visible en el HTML
   palabraVisibleP.innerHTML = palabraVisible.join(""); // Array a string y sin separadores
 
-  console.log(palabraVisible);
+  // console.log(palabraVisible);
 }
 
 function elegirPalabra() {
@@ -38,7 +38,7 @@ function elegirPalabra() {
 
   // Pasar la palabra elegida a mayúsculas
   palabraElegida = palabraElegida.toUpperCase();
-  console.log(palabraElegida);
+  // console.log(palabraElegida);
 
   // Ocultar la palabra visible con guiones bajos
   for (let i = 0; i < palabraElegida.length; i++) {
@@ -159,7 +159,7 @@ divLetras.addEventListener('click', function(e) {
 
   // Si ha perdido, no dejar que pulse las letras
   if (contadorErrores >= 7) {
-    exit();
+    return;
   }
 
   // Gestión si es la primera vez que pulsa una tecla
@@ -205,7 +205,7 @@ divLetras.addEventListener('click', function(e) {
           pararCrono();
           pararCuentaAtras();
           // Que no pueda pulsar ninguna tecla de las letras
-          exit();
+          return;
         }
 
     } else if (letraCorrecta == true) {
@@ -232,7 +232,11 @@ divLetras.addEventListener('click', function(e) {
       textoPartida.innerHTML = "Has adivinado la palabra";
       pararCrono();
       pararCuentaAtras();
-      exit();
+
+      // Guardar datos en LocalStorage
+      guardarRegistro(palabraElegida, contadorErrores, cronoHTML.innerText);
+
+      return;
     }
   }
 

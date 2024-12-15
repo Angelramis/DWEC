@@ -1,7 +1,8 @@
 Documentación técnica
 
 1. Descripción general del proyecto:
-
+El proyecto es el juego del ahorcado. Al jugar, aparecen las letras del abecedario
+y debes adivinar la palabra en los intentos dados.
 
 
 2. Funcionalidad:
@@ -9,23 +10,35 @@ Documentación técnica
 
 
 3. Estructura:
-
+Dividido entre carpetas que tienen funciones diferentes.
+js, json, views para html, documentacion, css y assets para imagenes y demás contenido
+que se fuera a usar.
 
 
 4. Requisitos del sistema:
-
+Cualquier navegador web que soporte javascript, html y css. Recomendable versión JavaScript
+ES12 o superior.
 
 
 5. Instalación y configuración:
-
-
+Descargar VSStudio e iniciar el archivo principal index.html.
 
 6. Uso del proyecto:
-
-
+Cómo usar:
+- Clicar jugar
+- Seleccionar tema de la palabra
+- Seleccionar cada letra antes de que se terminen los segundos para que no se descuente
+un error. Intentar no cometer errores hasta el máximo permitido.
+- Si se adivinó la palabra, puedes consultar la página de records para ver tranquilamente
+los datos de la partida y compararlos con otras palabras.
+Si se han jugado más de una vez a la misma palabra y ganado, se actualizará el registro
+al mejor puntuación.
+7 intentos disponibles. 10 segundos para elegir una letra antes de contar un error.
 
 7. Actualización:
-
+Se ha hecho la funcionalidad extra de la página mostrando los récords de cada palabra.
 
 
 8. Referencias:
+Las referencias utilizadas han sido los ejercicios hechos en clase con su teoría,
+y la página w3schools.
