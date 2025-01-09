@@ -219,7 +219,7 @@
 // parentesis, parentesis de metodo, flecha, claudator de metodo, enter y ;
 
 // numeros.forEach((numero)=> { // admite un parametro que apunta al elemento del array. Se llama como quieras
-//   let resultado = numero *2;
+//   let resultado = numero * 2;
 //   console.log(resultado);
 // });
 

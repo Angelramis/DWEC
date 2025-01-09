@@ -4,6 +4,16 @@
       "id": null,
       "palabra": "Informatica",
       "dificultad": 3
+    },
+    {
+      "id": null,
+      "palabra": "hola",
+      "dificultad": 1
+    },
+    {
+      "id": null,
+      "palabra": "hola",
+      "dificultad": 1
     }
   ]
 }

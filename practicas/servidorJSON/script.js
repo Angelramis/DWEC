@@ -4,7 +4,13 @@ const urlPalabras = "http://localhost:3000/palabras";
 const url = window.location.pathname; // Saber donde estamos ubicados
 if (url.includes("palabras-list.html")) {
   cargarPalabras();
-}
+} else if (url.includes("palabras-edit.html")) {
+  const parametros = new URLSearchParams(window.location.search);
+  const palabraId = parametros.get("id");
+  if (palabraId) {
+    cargarPalabra(palabraId);
+  }
+} 
 
 // Si a la funcion le pone sparametro, se ejecutaria simplemente leyendo la linea.
 // Con el ? si no encuentra el elemento no da error
@@ -13,11 +19,11 @@ document.getElementById('palabra-form')?.addEventListener('submit', guardarPalab
 function guardarPalabra(e) {
   e.preventDefault();
 
-  const metodo = "POST";
-  const url = urlPalabras;
+  const metodo = id ? "PUT" : "POST";
+  const urlGuardar = id ? `${urlPalabras}/${id}` : urlPalabras;
 
   const palabra = {
-    id: 0,
+    id: "0",
     palabra: document.getElementById("palabra").value,
     dificultad: +document.getElementById("dificultad").value,
   }
@@ -25,13 +31,14 @@ function guardarPalabra(e) {
   fetch(`${urlPalabras}`)
   .then(response => response.json())
   .then((data)=> {
-    if (fata && data.length > 0) {
-      palabra.id = +data[data.length -1] + 1;
+    if (data && data.length > 0) {
+      let idAux = +data[data.length -1] + 1;
+      palabra.id = idAux + ''; // truco para pasar number a string
     } else {
-      palabra.id = 1;
+      palabra.id = 1 + '';
     }
 
-    return fetch(`${url}`, {
+    return fetch(`${urlGuardar}`, {
       method: metodo,
       body: JSON.stringify(palabra),
       headers: {
@@ -66,4 +73,37 @@ async function cargarPalabras() {
   } catch(error) {
     console.log("Error al cargar las palabras: ", error);
   }
+}
+
+async function cargarPalabra(id) {
+  fetch(urlPalabras)
+  .then((response)=>response.json())
+  .then((data)=> {
+    const palabra = data.find((palabraP)=>palabraP.id == id);
+    document.getElementById("palabra").value = palabra.palabra;
+    document.getElementById("dificultad").value = palabra.dificultad;
+  })
+  .catch((error) => console.log("Error al cargar la palabra:" + error));
+
+
+}
+
+
+async function eliminarPalabra(id) {
+  const urlDelete = `${urlPalabras}/${id}`;
+
+  fetch `${urlDelete}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+  .then((response)=> response.json())
+  .then(()=>cargarPalabras())
+  .catch((error)=> console.log("Error al eliminar la palabra ", error));
+}
+
+async function editarPalabra(id) {
+  // manera de pasar parametros, despues del interrogante, por url. (son públicos)
+  window.location.href = `palabras-edit.html?id=${id}`;
 }
