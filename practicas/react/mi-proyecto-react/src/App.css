@@ -28,6 +28,25 @@
   color: #61dafb;
 }
 
+.titulo {
+  display: inline-block;
+  padding: 30px 60px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.subtitulo {
+  display: inline-block;
+  color: #555;
+  font-weight: 400;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #f4f4f4;
+  margin-top: 10px;
+  margin-bottom: 60px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

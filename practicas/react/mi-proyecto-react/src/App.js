@@ -1,7 +1,15 @@
 import './App.css';
-import {useState} from 'react';
+import React, {useState} from 'react';
+import Titulo from './components/Titulo'; // importar el componente creado
+import Modal from './components/Modal';
 
 // HOOK useState. Permite trabajar con variables dinámicas
+
+
+// PROPS -> pasar como parámetro
+
+const subTitulo = "Todos los proyectos para desarrollo de aplicaciones Web";
+
 function App() {
 
   const [mostrarEventos, setMostrarEventos] = useState(true);
@@ -11,8 +19,6 @@ function App() {
     {titulo: "Inicio navidad", id: 2},
     {titulo: "Inicio fiesta Sant Antoni", id: 3},
   ]);
-
-  // console.log(mostrarEventos);
 
   const handleClick = (id) => {
     
@@ -31,8 +37,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-
+    <div className="App"> {/*Solo un componente padre*/}
+      <Titulo titulo="Eventos de DAW 24/25" subTitulo = {subTitulo}/> 
       { mostrarEventos && ( // Lógica para mostrar/ocultar botones
         <div> 
           <button onClick={() => setMostrarEventos(false)}>Ocultar eventos</button>
@@ -46,11 +52,17 @@ function App() {
       )}
 
       {mostrarEventos && eventos.map((evento, index) => ( // jsx. - Si mostrarEventos es true
-        <div key={evento.id}>
+        <React.Fragment key={evento.id}>
           <h2>{index} - {evento.titulo}</h2>
           <button onClick={() => handleClick(evento.id)}>Eliminar evento</button>
-        </div>
+        </React.Fragment>
       ))}
+
+      <Modal>
+        <h2>Stem Talks</h2>
+        <p>No te lo pierdas: 30 y 31 de enero</p>
+        <a href='https://stem.gdgmenorca.dev/' target='blank'>Página web</a>
+      </Modal>
 
     </div>
   );
