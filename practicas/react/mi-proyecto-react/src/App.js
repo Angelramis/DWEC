@@ -1,69 +1,50 @@
-import './App.css';
-import React, {useState} from 'react';
-import Titulo from './components/Titulo'; // importar el componente creado
-import Modal from './components/Modal';
-
-// HOOK useState. Permite trabajar con variables dinámicas
-
-
-// PROPS -> pasar como parámetro
-
-const subTitulo = "Todos los proyectos para desarrollo de aplicaciones Web";
+import "./App.css";
+import { useState } from "react";
+import Titulo from "./components/Titulo";
+import Modal from "./components/Modal";
+import EventosLista from "./components/EventosLista";
+import EventoNuevoForm from "./components/EventoNuevoForm";
 
 function App() {
-
+  const [muestraModal, setMuestraModal] = useState(false);
   const [mostrarEventos, setMostrarEventos] = useState(true);
+  
+  const [eventos, setEventos] = useState([]);
 
-  const [eventos, setEventos] = useState([
-    {titulo: "Examen DWEC", id: 1},
-    {titulo: "Inicio navidad", id: 2},
-    {titulo: "Inicio fiesta Sant Antoni", id: 3},
-  ]);
+  const addEvento = () => {
+    setEventos{(eventosPrevios) => {
+      return [...eventosPrevios, eventos];
+    }}
+    setMuestraModal(false);
+  };
 
   const handleClick = (id) => {
-    
-    setEventos((eventosPrevios)=> {
-      return eventosPrevios.filter((evento) => {
-        return id !== evento.id;
-      })
-    });
+    setEventos((eventosPrevios)=> eventosPrevios.filter((evento)=> id !== evento.id));
+  };
 
 
-    // setEventos(eventos.filter((evento) => {
-    //   return id !== evento.id;
-    // }));
-    
-    // console.log(id);
-  }
+  const subTitulo = "Todos los eventos para Desarrollo de Aplicaciones Web";
 
   return (
-    <div className="App"> {/*Solo un componente padre*/}
-      <Titulo titulo="Eventos de DAW 24/25" subTitulo = {subTitulo}/> 
-      { mostrarEventos && ( // Lógica para mostrar/ocultar botones
-        <div> 
-          <button onClick={() => setMostrarEventos(false)}>Ocultar eventos</button>
+    <div className="App">
+      <Titulo titulo="Eventos de DAW 24/25" subTitulo={subTitulo} />
+      { mostrarEventos && (
+        <div>
+          <button onClick={()=>setMostrarEventos(false)}>Ocultar Eventos</button>
         </div>
       )}
-
       { !mostrarEventos && (
         <div>
-          <button onClick={() => setMostrarEventos(true)}>Mostrar eventos</button>
+          <button onClick={()=>setMostrarEventos(true)}>Mostrar Eventos</button>
         </div>
       )}
-
-      {mostrarEventos && eventos.map((evento, index) => ( // jsx. - Si mostrarEventos es true
-        <React.Fragment key={evento.id}>
-          <h2>{index} - {evento.titulo}</h2>
-          <button onClick={() => handleClick(evento.id)}>Eliminar evento</button>
-        </React.Fragment>
-      ))}
-
-      <Modal>
-        <h2>Stem Talks</h2>
-        <p>No te lo pierdas: 30 y 31 de enero</p>
-        <a href='https://stem.gdgmenorca.dev/' target='blank'>Página web</a>
-      </Modal>
-
+      {mostrarEventos && <EventosLista eventos={eventos} handleClick={handleClick} />}
+      {muestraModal && <Modal destino={document.body}>
+        <EventoNuevoForm addEvento={addEvento}/>
+      </Modal>}
+      <div>
+        <button onClick={() => setMuestraModal(true)}>Crear nuevo evento</button>
+      </div>
     </div>
   );
 }

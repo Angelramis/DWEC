@@ -1,10 +1,11 @@
-// Creación de un componente
-export default function Titulo(props) { 
+import './Titulo.css'
+
+export default function Titulo({titulo, subTitulo}) {
   return (
-    <> {/* Fragmento: tag sin contenido*/}
-      <h1 className="titulo">{props.titulo}</h1> 
-      <br/>
-      <h2 className="subtitulo">{props.subTitulo}</h2>
-    </>
+    <div className='titulo-componente'>
+      <h1 className="titulo">{titulo}</h1>
+      <br />
+      <h2 className="subtitulo">{subTitulo}</h2>
+    </div>
   )
 }
