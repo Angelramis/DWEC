@@ -1,41 +1,63 @@
-import { useState } from "react";
-import "./EventoNuevoForm.css";
+import { useState } from 'react';
+import './EventoNuevoForm.css';
 
-export default function EventoNuevoForm(addEvento) {
-  {/*Variables de estado*/}
-  const[titulo, setTitulo] = useState('');
-  const[fecha, setFecha] = useState('');
-
-  const evento = {
-    titulo: titulo,
-    fecha: fecha,
-    id: Math.floor(Math.random() * 10000)
-  };
+export default function EventoNuevoForm({ addEvento }) {
+  const [titulo, setTitulo] = useState('');
+  const [fecha, setFecha] = useState('');
+  const [ciudad, setCiudad] = useState('alaior');
 
   const resetForm = () => {
     setTitulo('');
     setFecha('');
-  };
+    setCiudad('');
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault(); {/* Hacer que el formulario no recargue la página */}
-    resetForm();
+    e.preventDefault();
+
+    const evento = {
+      titulo: titulo,
+      fecha: fecha,
+      ciudad: ciudad,
+      id: Math.floor(Math.random()*10000)
+    };
+
+    console.log(evento);
+
     addEvento(evento);
-  };
+
+    resetForm();
+  }
 
   return (
-    <form className="evento-nuevo-form" onSubmit={handleSubmit}>
-      <label> {/*Segunda forma de crear form*/}
-        <span>Título del evento</span>
-        <input type="text"onChange={(e) => setTitulo(e.target.value)}/>
-      </label>
-
+    <form className='evento-nuevo-form' onSubmit={handleSubmit}>
       <label>
-        <span>Fecha del evento</span>
-        <input type="date" onChange={(e) => setFecha(e.target.value)}/>
+        <span>Título del Evento</span>
+        <input type="text"
+        onChange={(e)=>setTitulo(e.target.value)}
+        value={titulo}
+        />
       </label>
-      <p>Título: {titulo} - Fecha: {fecha}</p>
-      <p onClick={resetForm}>Restablecer formulario</p>
+      <label>
+        <span>Fecha del Evento</span>
+        <input type="date"
+        onChange={(e)=>setFecha(e.target.value)}
+        value={fecha}
+        />
+      </label>
+      <label>
+        <span>Cuidad del evento</span>
+        <select>
+          <option value="alaior">Alaior</option>
+          <option value="castell">Es Castell</option>
+          <option value="ciutadella">Ciutadella</option>
+          <option value="ferreries">Ferreries</option>
+          <option value="mao">Maó</option>
+          <option value="mercadal">Es Mercadal</option>
+          <option value="mitjorn">Es Mitjorn</option>
+          <option value="santlluis">Sant Lluís</option>
+        </select>
+      </label>
       <button>Submit</button>
     </form>
   )

@@ -11,17 +11,16 @@ function App() {
   
   const [eventos, setEventos] = useState([]);
 
-  const addEvento = () => {
-    setEventos{(eventosPrevios) => {
-      return [...eventosPrevios, eventos];
-    }}
+  const addEvento = (evento) => {
+    setEventos((eventosPrevios) => {
+      return [...eventosPrevios, evento];
+    })
     setMuestraModal(false);
-  };
+  }
 
   const handleClick = (id) => {
     setEventos((eventosPrevios)=> eventosPrevios.filter((evento)=> id !== evento.id));
   };
-
 
   const subTitulo = "Todos los eventos para Desarrollo de Aplicaciones Web";
 
@@ -39,11 +38,11 @@ function App() {
         </div>
       )}
       {mostrarEventos && <EventosLista eventos={eventos} handleClick={handleClick} />}
-      {muestraModal && <Modal destino={document.body}>
-        <EventoNuevoForm addEvento={addEvento}/>
+      {muestraModal && <Modal destino={document.body} esExterno={true}>
+        <EventoNuevoForm addEvento={addEvento} />
       </Modal>}
       <div>
-        <button onClick={() => setMuestraModal(true)}>Crear nuevo evento</button>
+        <button onClick={() => setMuestraModal(true)}>Crear Nuevo Evento</button>
       </div>
     </div>
   );

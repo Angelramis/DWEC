@@ -10,7 +10,7 @@
 .modal {
   padding: 30px;
   max-width: 480px;
-  margin: 50px auto;
+  margin: 200px auto;
   background: #fff;
   border-radius: 10px;
 }
@@ -18,4 +18,9 @@
 .modal h2 {
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
+}
+.modal .externo-boton {
+  border: 4px solid #333;
+  font-size: 18px;
+  text-transform: uppercase;
 }
