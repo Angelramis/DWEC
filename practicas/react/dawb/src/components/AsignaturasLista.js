@@ -6,7 +6,7 @@ export default function AsignaturasLista() {
 
   const [url, setUrl] = useState("http://localhost:3000/asignaturas");
 
-  const {datos: asignaturas} = useFetch(url);
+  const {datos: asignaturas, cargando: cargando, error: error} = useFetch(url);
 
   //API fetch()
   fetch("http://localhost:3000/asignaturas")
@@ -17,6 +17,10 @@ export default function AsignaturasLista() {
   return (
     <div className="asignatura-lista">
       <h2>Listado de asignaturas</h2>
+      { cargando && (<div>Cargando asignaturas...</div>) }
+
+     { error && (<div>{error} </div >) }
+
       <ul>
       {asignaturas && asignaturas.map(asignatura => {
         <li key={asignaturas.id}>

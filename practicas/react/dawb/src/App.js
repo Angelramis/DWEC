@@ -1,13 +1,16 @@
 import './App.css';
-import React from 'react';
-import AsignaturasLista from './components/asignaturasLista';
-
+import React, { useState } from 'react';
+import AsignaturasLista from './components/asignaturasLista.js';
 // useEffect
 
 function App() {
+
+  const [muestraAsignaturas, setMuestraAsignaturas] = useState(true);
+
   return (
     <div className="App">
-      <AsignaturasLista />
+      <button onClick={()=> setMuestraAsignaturas(false)}>Esconde Asignaturas</button>
+      {muestraAsignaturas && <AsignaturasLista />}
     </div>
   );
 }
