@@ -35,10 +35,8 @@ export const useFetch = (url) => {
 
     fetchDatos();
 
-    
   }, [url]); /* volver a llamar cuando cambie de valor */
   
   return {datos: datos, cargando: cargando, error: error};
   
-
 };

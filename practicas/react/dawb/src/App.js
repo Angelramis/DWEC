@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import AsignaturasLista from './components/asignaturasLista.js';
+import AsignaturasLista from './components/AsignaturasLista.js';
 // useEffect
 
 function App() {
