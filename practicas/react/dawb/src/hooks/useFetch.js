@@ -1,42 +1,38 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = (url) => {
-  // Declaración estados
+export const useFetch = (url, actualizar) => {
+
   const [datos, setDatos] = useState(null);
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(null);
 
-  
-  useEffect(() => { // -> para evitar llamadas infinitas 
+  useEffect(() => {
     const fetchDatos = async () => {
-      
+
       setCargando(true);
 
-      try { // gestionar error
+      try {
         const response = await fetch(url);
 
-        if (!response.ok) {
-          throw new Error(response.statusText);
+        if(!response.ok) {
+          throw new Error(response.statusText)
         }
 
         const json = await response.json();
-      
+
         setCargando(false);
-      
         setDatos(json);
-
         setError(null);
-
-      } catch (err) {
+      } catch(err) {
         setCargando(false);
-        setError("Error: No se han podido obtener los datos.");
+        setError('No se pudieron obtener los datos...');
+        console.log(err);
       }
     };
 
-    fetchDatos();
+    fetchDatos();    
 
-  }, [url]); /* volver a llamar cuando cambie de valor */
-  
-  return {datos: datos, cargando: cargando, error: error};
-  
+  }, [url, actualizar]);
+
+  return {datos: datos, cargando: cargando, error: error}
 };
