@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
+import './Carta.css'
+export default function Carta({carta, handleEleccion, girada, deshabilitarClick}) {
 
-export default function Carta({carta}) {
+  const handleClick = () => {
+    if (!deshabilitarClick) {
+      handleEleccion(carta);
+    }
+  };
+
 
   return (
-    <div className='card' key={carta.id}>
-      <img src={carta.src} alt="frontal"></img>
-      <img src="./img/cubierta.jpg" alt="cubierta"></img>
+    <div className='card'>
+      <div className={girada ? "flipped" : ""}>
+        <img className="front" src={carta.src} alt="frontal"></img>
+        <img className="back" src="./cubierta.jpg" alt="cubierta" onClick={handleClick}></img>
+      </div>
     </div>
   )
 
