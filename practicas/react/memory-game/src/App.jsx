@@ -4,7 +4,6 @@ import Carta from './components/Carta';
 
 function App() {
   // ESTADOS
-  // Estado de cartas
   const [cartas, setCartas] = useState([]);
   // guardar las tarjetas escogidas
   const [eleccion1, setEleccion1] = useState(null); 

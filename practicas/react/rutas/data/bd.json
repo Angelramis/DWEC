@@ -1,0 +1,25 @@
+{
+  "receptes": [
+    {
+      "id": "1",
+      "nom": "vianda",
+      "autor": "Erik",
+      "ingredients": ["brou", "pasta", "pilotes", "sopa"],
+      "elaboracio": "Añade al vaso de batidora el resto de ingredientes líquidos: la leche y los huevos."
+    },
+    {
+      "id": "2",
+      "nom": "tortitas",
+      "autor": "Sergi",
+      "ingredients": ["llet", "ous", "farina", "xocolati"],
+      "elaboracio": "Funde la mantequilla introduciéndola en el microondas durante 30 o 40 segundos. Añádela al vaso de la batidora."
+    },
+    {
+      "id": "3",
+      "nom": "tiramisu",
+      "autor": "Albert",
+      "ingredients": ["cafe", "congret", "mascapone", "sucre"],
+      "elaboracio": "Tritura todos los ingredientes hasta conseguir una crema y pasa la mezcla por un colador para eliminar cualquier grumo que pueda tener. También puedes mezclarlos a mano con las varillas."
+    }
+  ]
+}
