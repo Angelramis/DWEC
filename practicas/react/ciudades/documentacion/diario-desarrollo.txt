@@ -1,0 +1,5 @@
+-- DIARIO DE DESARROLLO
+
+13/2/25:
+- Creación del proyecto React
+- Creación de archivos y carpetas principales 
