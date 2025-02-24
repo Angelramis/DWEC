@@ -9,8 +9,14 @@ header {
 .nav-paginas {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 a {
   color: #f0f0f0;
+}
+
+.nav-logo > p {
+  color: #f0f0f0;
+  font-size: 25px;
 }

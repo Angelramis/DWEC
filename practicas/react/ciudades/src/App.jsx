@@ -14,7 +14,6 @@ function App() {
       <BrowserRouter>
         <Navbar/>
 
-
         {/* Enlaces */}
         <Routes>
           <Route path="/Inicio" element={<Inicio/>}/>

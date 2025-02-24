@@ -1,11 +1,15 @@
 -- DIARIO DE DESARROLLO
 
-13/02/25:
+13-2-25:
 - Creación del proyecto React
 - Creación de archivos y carpetas principales 
 
 
-17/02/25:
+17-2-25:
 - Configuración de Firebase al proyecto
 - Creación de contenido de componentes, css's, rutas 
 (inicio, formulario, App)
+
+24-2-25:
+- Primeras funciones de Firebase hechas.
+- Hecho useEffect de obtener ciudades en componente List.jsx.
