@@ -5,7 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Formulario from './pages/formulario/Formulario';
 import Inicio from './pages/inicio/Inicio';
-
+import Ciudad from './pages/ciudad/Ciudad';
+import Buscador from './pages/buscador/Buscador';
 
 function App() {
 
@@ -16,8 +17,10 @@ function App() {
 
         {/* Enlaces */}
         <Routes>
-          <Route path="/Inicio" element={<Inicio/>}/>
+          <Route path="/" element={<Inicio/>}/>
           <Route path="/Formulario" element={<Formulario/>}/>
+          <Route path="/Buscador" element={<Buscador/>}/>
+          <Route path="/Ciudad/:id" element={<Ciudad />} /> {/* Página de detalles */}
         </Routes>
 
       </BrowserRouter>

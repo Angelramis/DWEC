@@ -13,3 +13,8 @@
 24-2-25:
 - Primeras funciones de Firebase hechas.
 - Hecho useEffect de obtener ciudades en componente List.jsx.
+
+27-2-25:
+- Implementado todos los campos de formulario de ciudad.
+- Hecha funcionalidades de eliminar ciudad, mostrar ciudad individual
+ y mostrar ciudades de inicio

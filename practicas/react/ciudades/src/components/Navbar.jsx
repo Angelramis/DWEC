@@ -10,8 +10,11 @@ export default function Navbar() {
         </nav>
 
         <nav className="nav-paginas">
-          <NavLink default to="/Inicio">
+          <NavLink to="/">
             <p>Inicio</p>
+          </NavLink>
+          <NavLink to="/Buscador">
+            <p>Buscador</p>
           </NavLink>
           <NavLink to="/Formulario">
             <p>Añadir Ciudad</p>

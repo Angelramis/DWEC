@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-import { doc, getFirestore, collection, addDoc, getDocs, getDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+import { doc, getFirestore, collection, addDoc, getDocs, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
 
 
 // Configuración de Firebase
@@ -11,7 +11,6 @@ const firebaseConfig = {
   messagingSenderId: "537507692614",
   appId: "1:537507692614:web:c098049eb10b2d0ec28a47"
 };
-
 
 const app = initializeApp(firebaseConfig);
 
@@ -34,21 +33,21 @@ export async function obtenerCiudades() {
   return ciudades;
 }
 
-export function obtenerCiudad(idCiudad) {
-  let ciudad = getDoc(doc(coleccionCiudades, idCiudad));
+export async function obtenerCiudad(idCiudad) {
+  let ciudad = await getDoc(doc(coleccionCiudades, idCiudad));
 
   return ciudad;
 }
 
-export function addCiudad(ciudad) {
-  addDoc(coleccionCiudades, ciudad);
+export async function addCiudad(ciudad) {
+  await addDoc(coleccionCiudades, ciudad);
 }
 
-export function eliminarCiudad(idCiudad) {
+export async function eliminarCiudad(idCiudad) {
   // Eliminar el elemento con el id especificado
-  deleteDoc(doc(coleccionCiudades, idCiudad));
+  await deleteDoc(doc(coleccionCiudades, idCiudad));
 }
 
-export function actualizarCiudad(idCiudad, nuevosDatos) {
-  updateDoc(doc(coleccionCiudades, idCiudad), nuevosDatos);
+export async function actualizarCiudad(idCiudad, nuevosDatos) {
+  await updateDoc(doc(coleccionCiudades, idCiudad), nuevosDatos);
 }
