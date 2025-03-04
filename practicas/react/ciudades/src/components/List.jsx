@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { obtenerCiudades } from '../db/firestore';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { eliminarCiudad } from '../db/firestore';
 
 export default function List() {
   // Estados
-  const [ciudades, setCiudades] = useState([]);
+  let [ciudades, setCiudades] = useState([]);
+  let [searchParams] = useSearchParams();
+  let busqueda = searchParams.get("q")?.toLowerCase() || "";
 
   // FUNCIONES
   async function gestionEliminarCiudad(id) {
@@ -23,27 +25,45 @@ export default function List() {
   useEffect(() => {
     async function obtenerCiudadesEffect() {
       let ciudades = await obtenerCiudades();
-      console.log(ciudades);
+      // console.log(ciudades);
       setCiudades(ciudades);
     }
       
     obtenerCiudadesEffect();
   }, []);
 
+  // Filtrar ciudades en base al buscador
+  let ciudadesFiltradas = ciudades.filter(ciudad =>
+    ciudad.nombre.toLowerCase().includes(busqueda)
+  );
+
   return (
     <nav className="ciudades-nav">
-      {ciudades.map((ciudad, indice) => (
-        <nav className='ciudad-card' key={ciudad.id}>
-          <Link to={`/Ciudad/${ciudad.id}`}>
-            <img src= {ciudad.imagen} alt="Imagen ciudad" className="imagen-ciudad"/>
-          </Link>
-            <p>Ciudad: {ciudad.nombre}</p>
-            <p>País: {ciudad.pais}</p>
-            <p>Habitantes: {ciudad.poblacion}</p>
-            <button className='boton-accion'>Editar</button>
-            <button className='boton-accion' onClick={() => gestionEliminarCiudad(ciudad.id)}>Eliminar</button>
-          </nav>
-        ))}
+      {ciudadesFiltradas.length > 0 ? (
+        ciudadesFiltradas.map(ciudad => (
+          <div className='ciudad-card' key={ciudad.id}>
+            <Link to={`/Ciudad/${ciudad.id}`}>
+              <img src={ciudad.imagen} alt="Imagen ciudad" className="imagen-ciudad"/>
+            </Link>
+            <div className='info-card'>
+              <p>Ciudad: {ciudad.nombre}</p>
+              <p>País: {ciudad.pais}</p>
+              <p>Habitantes: {ciudad.poblacion}</p>
+              <Link to={`/Ciudad/${ciudad.id}`}>
+              <button className='boton-accion'>Ver más</button>
+              </Link>
+              <Link to={`/Formulario/${ciudad.id}`}>
+                <button className='boton-accion'>Editar</button>
+              </Link>
+              <button className='boton-accion' onClick={() => gestionEliminarCiudad(ciudad.id)}>
+                Eliminar
+              </button>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No hay resultados.</p>
+      )}
     </nav>
-  )
+  );
 }

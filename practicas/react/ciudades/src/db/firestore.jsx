@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-import { doc, getFirestore, collection, addDoc, getDocs, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+import { doc, getFirestore, collection, addDoc, getDocs, getDoc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
 
 
 // Configuración de Firebase
@@ -50,4 +50,17 @@ export async function eliminarCiudad(idCiudad) {
 
 export async function actualizarCiudad(idCiudad, nuevosDatos) {
   await updateDoc(doc(coleccionCiudades, idCiudad), nuevosDatos);
+}
+
+// Función para buscar ID de una ciudad en la URL en Firestore
+export async function obtenerCiudadPorId(id) {
+  let idCiudad = doc(db, "ciudades", id);
+  let ciudad = await getDoc(idCiudad);
+
+  // Gestión si se ha encontrado o no la ciudad
+  if (ciudad.exists()) {
+    return {id: ciudad.id, ...ciudad.data()};
+  } else {
+    return null;
+  }
 }

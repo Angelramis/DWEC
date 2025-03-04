@@ -18,3 +18,7 @@
 - Implementado todos los campos de formulario de ciudad.
 - Hecha funcionalidades de eliminar ciudad, mostrar ciudad individual
  y mostrar ciudades de inicio
+
+4-3-25:
+- Hecha funcionalidad de editar ciudad y buscar ciudades.
+- Añadidas validaciones y mensajes de error en formulario.

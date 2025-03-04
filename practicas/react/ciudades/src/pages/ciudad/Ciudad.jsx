@@ -18,7 +18,7 @@ export default function Ciudad() {
           console.log("La ciudad no existe.");
         }
       } catch (error) {
-        console.error("Error obteniendo la ciudad:", error);
+        console.error("Error obteniendo la ciudad: ", error);
       }
     }
 
@@ -28,16 +28,19 @@ export default function Ciudad() {
   if (!ciudad) return <p>Cargando...</p>;
 
   return (
-    <>
-      <h1 className="titulo">Nombre ciudad</h1>
-      <img src={ciudad.imagen} alt={`Imagen de ${ciudad.nombre}`} className="imagen-ciudad" />
-      <p><strong>País:</strong> {ciudad.pais}</p>
-      <p><strong>Población:</strong> {ciudad.poblacion}</p>
-      <p><strong>Atractivos:</strong> {ciudad.atractivos}</p>
-      <p><strong>Cultura:</strong> {ciudad.cultura}</p>
-    </>
+    <div className="root-ciudad">
+      <main className="main-ciudad">
+        <h1 className="titulo">{ciudad.nombre}</h1>
+        <img src={ciudad.imagen} alt={`Imagen de ${ciudad.nombre}`} className="imagen-ciudad"/>
+        <h2 className="subtitulo-ciudad">País</h2>
+        <p>{ciudad.pais}</p>
+        <h2 className="subtitulo-ciudad">Población</h2>
+        <p>{ciudad.poblacion} habitantes</p>
+        <h2 className="subtitulo-ciudad">Atractivos</h2>
+        <p>{ciudad.atractivos}</p>
+        <h2 className="subtitulo-ciudad">Cultura</h2>
+        <p>{ciudad.cultura}</p>
+      </main>
+    </div>
   )
-  
 }
-
-

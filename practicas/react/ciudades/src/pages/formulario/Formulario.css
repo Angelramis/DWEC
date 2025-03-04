@@ -1,6 +1,25 @@
-.formulario-add-ciudad {
+.formulario-ciudad {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
+}
+
+.formulario-ciudad > input, .formulario-ciudad > textarea {
+  margin-bottom: 10px;
+}
+
+.formulario-ciudad > label {
+  margin-bottom: 5px;
+}
+
+.texto-error {
+  margin: 5px 0;
+  color: red;
+  border: 1px solid #0e0e0e;
+  padding: 10px;
+}
+
+.ocultar {
+  display: none;
 }

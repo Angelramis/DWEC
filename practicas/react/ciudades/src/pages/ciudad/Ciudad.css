@@ -1,0 +1,15 @@
+.main-ciudad {
+  width: 100%;
+  max-width: 900px;
+}
+
+.root-ciudad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subtitulo-ciudad {
+  border-bottom: 1px solid #0e0e0e;
+  margin: 10px 0;
+}

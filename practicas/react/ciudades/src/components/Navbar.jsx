@@ -6,7 +6,9 @@ export default function Navbar() {
     return (
       <header>
         <nav className="nav-logo">
+        <NavLink to="/">
           <p>Ciudades</p>
+          </NavLink>
         </nav>
 
         <nav className="nav-paginas">
