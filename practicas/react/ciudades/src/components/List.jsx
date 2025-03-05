@@ -49,15 +49,17 @@ export default function List() {
               <p>Ciudad: {ciudad.nombre}</p>
               <p>País: {ciudad.pais}</p>
               <p>Habitantes: {ciudad.poblacion}</p>
-              <Link to={`/Ciudad/${ciudad.id}`}>
-              <button className='boton-accion'>Ver más</button>
-              </Link>
-              <Link to={`/Formulario/${ciudad.id}`}>
-                <button className='boton-accion'>Editar</button>
-              </Link>
-              <button className='boton-accion' onClick={() => gestionEliminarCiudad(ciudad.id)}>
-                Eliminar
-              </button>
+              <nav className="nav-botones">
+                <Link to={`/Ciudad/${ciudad.id}`}>
+                  <button className='boton-accion'>Ver más</button>
+                </Link>
+                <Link to={`/Formulario/${ciudad.id}`}>
+                  <button className='boton-accion'>Editar</button>
+                </Link>
+                <button className='boton-accion' onClick={() => gestionEliminarCiudad(ciudad.id)}>
+                  Eliminar
+                </button>
+              </nav>
             </div>
           </div>
         ))

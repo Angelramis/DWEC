@@ -31,7 +31,9 @@ export default function Ciudad() {
     <div className="root-ciudad">
       <main className="main-ciudad">
         <h1 className="titulo">{ciudad.nombre}</h1>
-        <img src={ciudad.imagen} alt={`Imagen de ${ciudad.nombre}`} className="imagen-ciudad"/>
+        <nav className="contenedor-imagen">
+          <img src={ciudad.imagen} alt={`Imagen de ${ciudad.nombre}`} className="imagen-ciudad-individual"/>
+        </nav>
         <h2 className="subtitulo-ciudad">País</h2>
         <p>{ciudad.pais}</p>
         <h2 className="subtitulo-ciudad">Población</h2>

@@ -46,6 +46,12 @@ main {
   padding: 10px;
 }
 
+.nav-botones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .imagen-ciudad {
   width: 200px;
   height: 150px;

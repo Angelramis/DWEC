@@ -1,5 +1,17 @@
 .input-buscador {
   margin: 15px 0;
   width: 200px;
+  height: 35px;
   border-radius: 8px;
+}
+
+.boton-buscar {
+  width: 50px;
+  height: 35px;
+  border-radius: 8px;
+}
+
+.lupa {
+  width: 30px;
+  height: 30px;
 }

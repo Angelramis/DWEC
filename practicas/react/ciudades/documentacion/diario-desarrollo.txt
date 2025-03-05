@@ -4,7 +4,6 @@
 - Creación del proyecto React
 - Creación de archivos y carpetas principales 
 
-
 17-2-25:
 - Configuración de Firebase al proyecto
 - Creación de contenido de componentes, css's, rutas 
@@ -22,3 +21,6 @@
 4-3-25:
 - Hecha funcionalidad de editar ciudad y buscar ciudades.
 - Añadidas validaciones y mensajes de error en formulario.
+
+5-3-35:
+- Puesto la barra de busqueda en el Navbar, ya que estaba en la página Buscador

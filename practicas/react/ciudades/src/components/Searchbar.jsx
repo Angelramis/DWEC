@@ -1,25 +1,25 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, NavLink } from "react-router-dom";
 
 export default function Searchbar() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") || "");
   const navigate = useNavigate();
 
-  function handleSearch(e) {
-    const value = e.target.value;
-    setQuery(value);
+  function gestionarBusqueda(e) {
+    let texto = e.target.value;
+    setQuery(texto);
 
-    if (value.trim() === "") {
+    if (texto.trim() == "") {
       setSearchParams({});
     } else {
-      setSearchParams({ q: value });
+      setSearchParams({ q: texto });
     }
   }
 
   return (
-    <input type="text" placeholder="Nombres de ciudades..." 
-    value={query} onChange={handleSearch} className="input-buscador"
-    />
+    <>
+      <input type="text" onChange={gestionarBusqueda} placeholder="Nombres de ciudades..." className="input-buscador" id="input-busqueda"/>
+    </>
   );
 }

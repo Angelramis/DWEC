@@ -1,6 +1,6 @@
 import "../components/Navbar.css";
 import { NavLink } from 'react-router-dom';
-
+import Searchbar from "./Searchbar";
 
 export default function Navbar() {
     return (
@@ -12,12 +12,11 @@ export default function Navbar() {
         </nav>
 
         <nav className="nav-paginas">
+          <Searchbar/>
           <NavLink to="/">
             <p>Inicio</p>
           </NavLink>
-          <NavLink to="/Buscador">
-            <p>Buscador</p>
-          </NavLink>
+ 
           <NavLink to="/Formulario">
             <p>Añadir Ciudad</p>
           </NavLink>

@@ -13,3 +13,14 @@
   border-bottom: 1px solid #0e0e0e;
   margin: 10px 0;
 }
+
+.contenedor-imagen {
+  display: flex;
+  justify-content: center;
+}
+
+.imagen-ciudad-individual {
+  width: 350px;
+  height: 250px;
+  box-shadow: 0px 0px 3px 0px #0e0e0e;
+}
