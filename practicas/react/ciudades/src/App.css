@@ -70,7 +70,7 @@ main {
   height: 40px;
   width: 140px;
   margin-top: 10px;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .boton-accion:hover {

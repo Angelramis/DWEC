@@ -23,7 +23,7 @@
 - Añadidas validaciones y mensajes de error en formulario.
 
 5-3-35:
-- Puesto la barra de busqueda en el Navbar, ya que estaba en la página Buscador
+- Puesto la barra de busqueda en el Navbar con su código correspondiente.
 
 6-3-25:
 - Hecho que al escribir en el buscador, rediriga a la página buscador con la query actual.

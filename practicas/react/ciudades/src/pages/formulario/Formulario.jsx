@@ -18,7 +18,7 @@ export default function Formulario() {
   // FUNCIONES
   useEffect(() => {
     if (id) {
-      // Si hay un ID, se edita la ciudad
+      // Si hay un ID, asignar edición de la ciudad
       setEditando(true);
       async function cargarCiudad() {
         const ciudad = await obtenerCiudadPorId(id);
@@ -40,7 +40,7 @@ export default function Formulario() {
     const file = e.target.files[0]; 
 
     if (file) {
-      // Si lo enviado NO es una imagen
+      // Si el archivo enviado NO es una imagen
       if (!file.type.startsWith("image/")) {
         setError("Solo se permiten archivos de imagen.");
         return;
@@ -65,7 +65,7 @@ export default function Formulario() {
         setImagen(reader.result);
       };
       reader.onerror = (error) => {
-        console.error("Error al convertir imagen a Base64:", error);
+        setError("Error al convertir imagen a Base64:", error);
       };
     }
   }
@@ -105,17 +105,15 @@ export default function Formulario() {
       setAtractivos("");
       setCultura("");
     } catch (error) {
-      console.error("Error guardando la ciudad: ", error);
+      setError(error);
     }
   }
-
 
     return (
       <main>
         <h1 className="titulo">{editando ? "Editar " : "Añadir "} ciudad</h1>
 
         <form onSubmit={envioFormulario} className="formulario-ciudad">
-
           <label htmlFor="nombre-ciudad">Nombre</label>
           <input type="text" name="nombre-ciudad" value={nombre} id="nombre-ciudad" onChange={(e) => setNombre(e.target.value)}/>
 

@@ -9,7 +9,6 @@ import Ciudad from './pages/ciudad/Ciudad';
 import Buscador from './pages/buscador/Buscador';
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
@@ -20,7 +19,7 @@ function App() {
           <Route path="/Formulario" element={<Formulario/>}/>
           <Route path="/Formulario/:id" element={<Formulario />} />
           <Route path="/Buscador" element={<Buscador/>}/>
-          <Route path="/Ciudad/:id" element={<Ciudad />} /> {/* Página de detalles */}
+          <Route path="/Ciudad/:id" element={<Ciudad />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>

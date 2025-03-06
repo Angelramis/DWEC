@@ -18,7 +18,7 @@ export default function List() {
       setCiudades(ciudades.filter(ciudad => ciudad.id !== id));
       alert("Ciudad eliminada.");
     } catch (error) {
-      console.error("Error eliminando ciudad:", error);
+      alert("Error eliminando ciudad:", error);
     }
   }
 
@@ -29,14 +29,14 @@ export default function List() {
         let ciudades = await obtenerCiudades();
         setCiudades(ciudades);
       } catch (error) {
-        console.error("Error al obtener las ciudades:", error);
+        alert("Error al obtener las ciudades:", error);
       } 
       setCargando(false);
     }
     obtenerCiudadesEffect();
   }, []);
 
-  // Filtrar ciudades en base al buscador
+  // Filtrar ciudades en base a la busqueda
   let ciudadesFiltradas = ciudades.filter(ciudad =>
     ciudad.nombre.toLowerCase().includes(busqueda)
   );

@@ -7,6 +7,7 @@
 
 .formulario-ciudad > input, .formulario-ciudad > textarea {
   margin-bottom: 10px;
+  border-radius: 8px;
 }
 
 .formulario-ciudad > label {
@@ -15,9 +16,10 @@
 
 .texto-error {
   margin: 5px 0;
-  color: red;
-  border: 1px solid #0e0e0e;
+  color: #f0f0f0;
+  background-color: #d90101;
   padding: 10px;
+  border-radius: 8px;
 }
 
 .ocultar {
