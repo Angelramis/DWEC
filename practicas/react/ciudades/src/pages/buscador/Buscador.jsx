@@ -1,4 +1,3 @@
-import Searchbar from "../../components/Searchbar";
 import List from "../../components/List";
 import "./Buscador.css";
 

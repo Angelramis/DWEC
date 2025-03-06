@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams, NavLink } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Searchbar() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") || "");
   const navigate = useNavigate();
-
+  
   function gestionarBusqueda(e) {
     let texto = e.target.value;
     setQuery(texto);
@@ -15,6 +15,9 @@ export default function Searchbar() {
     } else {
       setSearchParams({ q: texto });
     }
+
+    // Redirigir a página Buscador con la query
+    navigate(`/Buscador?q=${encodeURIComponent(texto)}`);
   }
 
   return (

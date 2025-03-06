@@ -4,17 +4,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./Formulario.css";
 
 export default function Formulario() {
-  // Estados
-  let { id } = useParams(); // Captura de id en URL
-  let navigate = useNavigate();
-  let [nombre, setNombre] = useState("");
-  let [pais, setPais] = useState("");
-  let [poblacion, setPoblacion] = useState("");
-  let [imagen, setImagen] = useState("");
-  let [atractivos, setAtractivos] = useState("");
-  let [cultura, setCultura] = useState("");
-  let [editando, setEditando] = useState(false);
-  let [error, setError] = useState(""); // Estado para errores
+  const { id } = useParams(); // Captura de id en URL
+  const navigate = useNavigate();
+  const [nombre, setNombre] = useState("");
+  const [pais, setPais] = useState("");
+  const [poblacion, setPoblacion] = useState("");
+  const [imagen, setImagen] = useState("");
+  const [atractivos, setAtractivos] = useState("");
+  const [cultura, setCultura] = useState("");
+  const [editando, setEditando] = useState(false);
+  const [error, setError] = useState("");
 
   // FUNCIONES
   useEffect(() => {
@@ -41,8 +40,6 @@ export default function Formulario() {
     const file = e.target.files[0]; 
 
     if (file) {
-      // Validaciones
-
       // Si lo enviado NO es una imagen
       if (!file.type.startsWith("image/")) {
         setError("Solo se permiten archivos de imagen.");

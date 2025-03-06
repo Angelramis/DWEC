@@ -1,2 +1,41 @@
 -- DOCUMENTACIÓN DEL PROYECTO
 
+- Introducción
+El proyecto consiste en gestionar información sobre ciudades.
+Pudiendo ver, añadir, eliminar y editar características principales de ciudades.
+
+
+- Instalación y configuración
+Ejecutar el proyecto en un entorno local:
+  - Ordenador.
+  - Descargar NPM.
+  - Descargar React + Vite conjuntamente.
+  - Programa de programación Visual Studio Code.
+  - Abrir el programa, entrar al proyecto, y en la terminal escribir "npm run dev"
+    para arrancar el proyecto.
+
+
+- Estructura del código
+Las principales carpetas son las descargadas por React, y luego en cada
+carpeta se organiza cada funcionalidad como los componentes, las paginas, 
+lo que interactua con la BBDD. Así como los archivos pertinentes dentro, y con
+demás archivos descargados necesarios para usar React.
+
+
+- Funciones implementadas
+La aplicación permite ver las ciudades añadidas a la base de datos anteriormente.
+Eliminarlas individualmente, editar cualquiera de su contenido, y añadir nuevas ciudades
+sin uso de código por parte del usuario.
+
+Las páginas disponibles son:
+  - Inicio. Donde se ven todas las ciudades guardadas.
+  - Búsqueda. Donde se accede escribiendo un nombre de ciudad en la barra de búsqueda.
+    Mostrando las ciudades que coinciden con la búsqueda.
+  - Añadir y editar ciudades. Editando cada campo de la ciudad requerido.
+
+
+
+- Mejoras y futuras implementaciones
+  - Más campos para las ciudades para mostrar más información.
+  - La funcionalidad de poder guardar un borrador al estar añadiendo una ciudad, para poder
+    seguir editándola sin publicarse ni perdiéndose la información escrita.

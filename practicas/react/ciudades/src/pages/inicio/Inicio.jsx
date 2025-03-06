@@ -1,6 +1,5 @@
 import List from "../../components/List";
 
-
 export default function Inicio() {
   
     return (
@@ -10,7 +9,4 @@ export default function Inicio() {
         <List/>
       </main>
     )
-  
 }
-
-

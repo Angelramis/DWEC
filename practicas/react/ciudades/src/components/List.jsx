@@ -5,8 +5,9 @@ import { eliminarCiudad } from '../db/firestore';
 
 export default function List() {
   // Estados
-  let [ciudades, setCiudades] = useState([]);
-  let [searchParams] = useSearchParams();
+  const [ciudades, setCiudades] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [searchParams] = useSearchParams();
   let busqueda = searchParams.get("q")?.toLowerCase() || "";
 
   // FUNCIONES
@@ -24,11 +25,14 @@ export default function List() {
   // Función para obtener las ciudades
   useEffect(() => {
     async function obtenerCiudadesEffect() {
-      let ciudades = await obtenerCiudades();
-      // console.log(ciudades);
-      setCiudades(ciudades);
+      try {
+        let ciudades = await obtenerCiudades();
+        setCiudades(ciudades);
+      } catch (error) {
+        console.error("Error al obtener las ciudades:", error);
+      } 
+      setCargando(false);
     }
-      
     obtenerCiudadesEffect();
   }, []);
 
@@ -39,7 +43,9 @@ export default function List() {
 
   return (
     <nav className="ciudades-nav">
-      {ciudadesFiltradas.length > 0 ? (
+      {cargando ? (
+        <p>Cargando...</p>
+      ) : ciudadesFiltradas.length > 0 ? (
         ciudadesFiltradas.map(ciudad => (
           <div className='ciudad-card' key={ciudad.id}>
             <Link to={`/Ciudad/${ciudad.id}`}>
